@@ -43,24 +43,24 @@ class RapidOcrModel(BaseOcrModel):
     ] = {
         "onnxruntime": {
             "det_model_path": {
-                "url": "https://www.modelscope.cn/models/RapidAI/RapidOCR/resolve/v3.5.0/onnx/PP-OCRv4/det/ch_PP-OCRv4_det_infer.onnx",
-                "path": "onnx/PP-OCRv4/det/ch_PP-OCRv4_det_infer.onnx",
+                "url": "https://www.modelscope.cn/models/RapidAI/RapidOCR/resolve/v3.6.0/onnx/PP-OCRv5/det/ch_PP-OCRv5_mobile_det.onnx",
+                "path": "onnx/PP-OCRv5/det/ch_PP-OCRv5_mobile_det.onnx",
             },
             "cls_model_path": {
-                "url": "https://www.modelscope.cn/models/RapidAI/RapidOCR/resolve/v3.5.0/onnx/PP-OCRv4/cls/ch_ppocr_mobile_v2.0_cls_infer.onnx",
+                "url": "https://www.modelscope.cn/models/RapidAI/RapidOCR/resolve/v3.6.0/onnx/PP-OCRv4/cls/ch_ppocr_mobile_v2.0_cls_infer.onnx",
                 "path": "onnx/PP-OCRv4/cls/ch_ppocr_mobile_v2.0_cls_infer.onnx",
             },
             "rec_model_path": {
-                "url": "https://www.modelscope.cn/models/RapidAI/RapidOCR/resolve/v3.5.0/onnx/PP-OCRv4/rec/ch_PP-OCRv4_rec_infer.onnx",
-                "path": "onnx/PP-OCRv4/rec/ch_PP-OCRv4_rec_infer.onnx",
+                "url": "https://www.modelscope.cn/models/RapidAI/RapidOCR/resolve/v3.6.0/onnx/PP-OCRv5/rec/latin_PP-OCRv5_rec_mobile_infer.onnx",
+                "path": "onnx/PP-OCRv5/rec/latin_PP-OCRv5_rec_mobile_infer.onnx",
             },
             "rec_keys_path": {
-                "url": "https://www.modelscope.cn/models/RapidAI/RapidOCR/resolve/v3.5.0/paddle/PP-OCRv4/rec/ch_PP-OCRv4_rec_infer/ppocr_keys_v1.txt",
-                "path": "paddle/PP-OCRv4/rec/ch_PP-OCRv4_rec_infer/ppocr_keys_v1.txt",
+                "url": "https://www.modelscope.cn/models/RapidAI/RapidOCR/resolve/v3.6.0/paddle/PP-OCRv5/rec/latin_PP-OCRv5_rec_mobile_infer/ppocrv5_latin_dict.txt",
+                "path": "paddle/PP-OCRv4/rec/latin_PP-OCRv5_rec_mobile_infer/ppocrv5_latin_dict.txt",
             },
             "font_path": {
-                "url": "https://www.modelscope.cn/models/RapidAI/RapidOCR/resolve/v3.5.0/resources/fonts/FZYTK.TTF",
-                "path": "fonts/FZYTK.TTF",
+                "url": "https://www.modelscope.cn/models/RapidAI/RapidOCR/resolve/v3.6.0/resources/fonts/latin.ttf",
+                "path": "fonts/latin.ttf",
             },
         },
         "torch": {
