@@ -202,6 +202,7 @@ class RapidOcrModel(BaseOcrModel):
                 "Det.engine_type": backend_enum,
                 "Cls.engine_type": backend_enum,
                 "Rec.engine_type": backend_enum,
+                "EngineConfig.onnxruntime.use_cuda": use_cuda,
                 "EngineConfig.paddle.use_cuda": use_cuda,
                 "EngineConfig.paddle.gpu_id": gpu_id,
                 "EngineConfig.torch.use_cuda": use_cuda,
