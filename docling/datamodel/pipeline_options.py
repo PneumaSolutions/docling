@@ -232,16 +232,18 @@ class RapidOcrOptions(OcrOptions):
     """
 
     kind: ClassVar[Literal["rapidocr"]] = "rapidocr"
-    # English and chinese are the most commonly used models and have been tested with RapidOCR.
+    # Pneuma fork default: 'latin' selects the PP-OCRv5 Latin models, which give
+    # better recognition for Latin-script documents than the legacy PP-OCRv4
+    # models. Upstream defaults to 'chinese'.
     lang: Annotated[
         list[str],
         Field(
             description=(
-                "List of OCR languages. Note: RapidOCR currently supports 'english' and 'chinese' (default). "
-                "See RapidOCR documentation for other supported languages."
+                "List of OCR languages. Note: RapidOCR currently supports 'english', 'chinese', and "
+                "'latin' (default in this fork). See RapidOCR documentation for other supported languages."
             )
         ),
-    ] = ["chinese"]
+    ] = ["latin"]
     backend: Annotated[
         Literal["onnxruntime", "openvino", "paddle", "torch"],
         Field(

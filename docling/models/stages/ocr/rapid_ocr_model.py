@@ -38,7 +38,7 @@ _RAPIDOCR_MODELSCOPE_RELEASE = "v3.8.0"
 _RAPIDOCR_MODELSCOPE_BASE_URL = (
     "https://www.modelscope.cn/models/RapidAI/RapidOCR/resolve"
 )
-_RAPIDOCR_DEFAULT_LANGUAGE = "chinese"
+_RAPIDOCR_DEFAULT_LANGUAGE = "latin"
 _RAPIDOCR_CHINESE_MODEL_PATHS: dict[_ModelPathEngines, dict[_ModelPathTypes, str]] = {
     "onnxruntime": {
         "det_model_path": "onnx/PP-OCRv4/det/ch_PP-OCRv4_det_mobile.onnx",
@@ -69,6 +69,27 @@ _RAPIDOCR_ENGLISH_MODEL_PATHS: dict[_ModelPathEngines, dict[_ModelPathTypes, str
         "rec_model_path": "torch/PP-OCRv4/rec/en_PP-OCRv4_rec_mobile.pth",
         "rec_keys_path": "paddle/PP-OCRv4/rec/en_PP-OCRv4_rec_mobile/en_dict.txt",
         "font_path": "resources/fonts/FZYTK.TTF",
+    },
+}
+# Latin-script PP-OCRv5 models (default): better recognition for Latin-script
+# documents than the legacy PP-OCRv4 English models above.
+_RAPIDOCR_LATIN_MODEL_PATHS: dict[_ModelPathEngines, dict[_ModelPathTypes, str]] = {
+    "onnxruntime": {
+        "det_model_path": "onnx/PP-OCRv5/det/ch_PP-OCRv5_det_mobile.onnx",
+        # Standard v2.0 angle classifier: the PP-OCRv5 textline-orientation
+        # model expects a different input shape and is incompatible with
+        # RapidOCR's Cls stage preprocessing.
+        "cls_model_path": "onnx/PP-OCRv4/cls/ch_ppocr_mobile_v2.0_cls_mobile.onnx",
+        "rec_model_path": "onnx/PP-OCRv5/rec/latin_PP-OCRv5_rec_mobile.onnx",
+        "rec_keys_path": "paddle/PP-OCRv5/rec/latin_PP-OCRv5_rec_mobile/ppocrv5_latin_dict.txt",
+        "font_path": "resources/fonts/latin.ttf",
+    },
+    "torch": {
+        "det_model_path": "torch/PP-OCRv5/det/ch_PP-OCRv5_det_mobile.pth",
+        "cls_model_path": "torch/PP-OCRv4/cls/ch_ptocr_mobile_v2.0_cls_mobile.pth",
+        "rec_model_path": "torch/PP-OCRv5/rec/latin_PP-OCRv5_rec_mobile.pth",
+        "rec_keys_path": "paddle/PP-OCRv5/rec/latin_PP-OCRv5_rec_mobile/ppocrv5_latin_dict.txt",
+        "font_path": "resources/fonts/latin.ttf",
     },
 }
 
@@ -110,6 +131,13 @@ class RapidOcrModel(BaseOcrModel):
             backend: {
                 key: _build_model_detail(path)
                 for key, path in _RAPIDOCR_ENGLISH_MODEL_PATHS[backend].items()
+            }
+            for backend in _RAPIDOCR_BACKENDS
+        },
+        "latin": {
+            backend: {
+                key: _build_model_detail(path)
+                for key, path in _RAPIDOCR_LATIN_MODEL_PATHS[backend].items()
             }
             for backend in _RAPIDOCR_BACKENDS
         },

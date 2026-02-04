@@ -195,7 +195,7 @@ def download_models(
 
     if with_rapidocr:
         for backend in ("torch", "onnxruntime"):
-            for lang in ("chinese", "english"):
+            for lang in ("chinese", "english", "latin"):
                 _log.info(f"Downloading rapidocr {backend} {lang} models...")
                 RapidOcrModel.download_models(
                     backend=backend,
